@@ -1,0 +1,27 @@
+# 本机路径配置（含用户名，不能提交）
+local.properties
+
+# 构建产物
+.gradle/
+build/
+app/build/
+captures/
+*.apk
+*.aab
+*.ap_
+*.dex
+release/
+
+# IDE
+.idea/
+*.iml
+*.hprof
+.vscode/
+
+# 系统
+.DS_Store
+Thumbs.db
+
+# 注意：keystore/musicdl.jks 是**故意**提交的。
+# 它是自签名密钥，公开发布没有安全意义，放在仓库里是为了让任何人都能
+# 复现出签名一致的 APK（否则升级安装会因为签名不同而失败）。

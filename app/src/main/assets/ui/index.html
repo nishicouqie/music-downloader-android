@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#ffffff">
+<title>音乐下载器</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+      </svg>
+    </span>
+    <span id="pageTitle">音乐下载器</span>
+  </div>
+  <button class="chip" id="btnTarget" title="保存位置">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+    </svg>
+    <span id="targetText">…</span>
+  </button>
+</header>
+
+<main id="main">
+
+  <!-- ================= 搜索 ================= -->
+  <section class="page" id="page-search">
+    <div class="searchbox">
+      <div class="search-wrap">
+        <svg class="s-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+             stroke-width="2.2" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>
+        </svg>
+        <input id="q" type="search" autocomplete="off" spellcheck="false"
+               enterkeyhint="search" placeholder="歌名、歌手，或粘贴网易云链接">
+        <button class="input-clear" id="btnClear" hidden aria-label="清空">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+               stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <button class="btn btn-primary" id="btnSearch">
+        <span class="lbl">搜索</span><span class="spin" hidden></span>
+      </button>
+    </div>
+
+    <div class="chips-row">
+      <div class="seg" id="segFormat">
+        <button data-v="flac">无损</button>
+        <button data-v="both">都要</button>
+        <button data-v="mp3">320K</button>
+      </div>
+      <button class="status" id="sourceChip">
+        <span class="dot"></span><span id="sourceText">…</span>
+      </button>
+    </div>
+
+    <div id="results"></div>
+    <div id="jobs"></div>
+  </section>
+
+  <!-- ================= 文件 ================= -->
+  <section class="page" id="page-files" hidden>
+    <div class="card">
+      <div class="row-between">
+        <div style="min-width:0">
+          <div class="lbl">当前保存位置</div>
+          <div class="path" id="filesTarget">…</div>
+        </div>
+        <button class="btn btn-sm btn-ghost" id="btnPickDir2">更改</button>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-ghost btn-sm" id="btnRefresh">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12a9 9 0 1 1-2.6-6.4M21 3v6h-6"/></svg>
+          刷新
+        </button>
+        <button class="btn btn-ghost btn-sm" id="btnRescan">重建媒体库索引</button>
+      </div>
+      <p class="hint">文件直接放在系统「Music」目录里，绝大多数播放器打开就能看到。</p>
+    </div>
+
+    <div class="sec-head">
+      <span id="mineCount">此处的文件</span>
+      <button class="link" id="btnSelAll" hidden>全选</button>
+    </div>
+    <div id="mineList"></div>
+
+    <div class="sec-head" id="elseHead" hidden>
+      <span>其他位置发现的音频</span>
+      <button class="link" id="btnScanElse">扫描</button>
+    </div>
+    <div id="elseList"></div>
+    <p class="hint" id="elseHint" hidden>勾选后点「移动到这里」，就能把别处下载的歌收进 Music 目录。</p>
+  </section>
+
+  <!-- ================= 设置 ================= -->
+  <section class="page" id="page-settings" hidden>
+    <div class="card">
+      <div class="grp-title">保存位置</div>
+      <p class="hint" id="setTargetDesc">…</p>
+      <div class="btn-row">
+        <button class="btn btn-primary btn-sm" id="btnDefaultDir">用默认 Music 目录</button>
+        <button class="btn btn-ghost btn-sm" id="btnPickDir">自己选一个…</button>
+      </div>
+      <label class="field">
+        <span class="fl">子目录名</span>
+        <input type="text" id="setDirName" placeholder="音乐下载">
+      </label>
+    </div>
+
+    <div class="card">
+      <div class="grp-title">下载</div>
+      <label class="field">
+        <span class="fl">默认格式</span>
+        <div class="seg seg-full" id="setFormat">
+          <button data-v="flac">无损 FLAC</button>
+          <button data-v="both">都要</button>
+          <button data-v="mp3">MP3 320K</button>
+        </div>
+      </label>
+      <label class="field">
+        <span class="fl">音源策略</span>
+        <select id="setSource">
+          <option value="official_first">官方 VIP 优先，失败自动降级</option>
+          <option value="aggregator_only">只用聚合接口</option>
+        </select>
+      </label>
+      <label class="field">
+        <span class="fl">封面最大边长</span>
+        <input type="number" id="setCoverMax" min="0" max="4000" step="100"
+               inputmode="numeric">
+      </label>
+    </div>
+
+    <div class="card">
+      <div class="grp-title">网易云 VIP 账号</div>
+      <p class="hint">不配也能用（自动走聚合接口）；配了自己已付费的账号就走官方通道，更稳定。</p>
+      <div id="cookieList"></div>
+      <details class="add-cookie" id="addCookieBox">
+        <summary>+ 添加账号</summary>
+        <div class="add-cookie-body">
+          <label class="field">
+            <span class="fl">名称</span>
+            <input type="text" id="ckName" placeholder="例如：我的黑胶大号">
+          </label>
+          <label class="field">
+            <span class="fl">MUSIC_U / Cookie</span>
+            <textarea id="ckValue" rows="3" spellcheck="false"
+                      placeholder="粘贴 MUSIC_U 的值，或整条 cookie 串"></textarea>
+          </label>
+          <div class="help">
+            <b>最省事的拿法：</b>在电脑上用桌面版取好 Cookie，然后这里「导入配置文件」，
+            账号会一起带过来，不用手抄。
+          </div>
+          <div class="btn-row btn-row-end">
+            <button class="btn btn-ghost btn-sm" id="btnTestNew">先测一下</button>
+            <button class="btn btn-primary btn-sm" id="btnAddCookie">保存</button>
+          </div>
+          <div id="testResult"></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="card">
+      <div class="grp-title">写入内容</div>
+      <label class="switch"><input type="checkbox" id="setCover"><span></span>内嵌封面</label>
+      <label class="switch"><input type="checkbox" id="setLyrics"><span></span>内嵌歌词（含时间轴）</label>
+      <label class="switch"><input type="checkbox" id="setLrc"><span></span>另外生成同名 .lrc</label>
+    </div>
+
+    <div class="card">
+      <div class="grp-title">配置文件</div>
+      <p class="hint">把全部设置（含账号）存成一个 json 文件，换手机或分享给朋友时不用手抄。</p>
+      <div class="btn-row">
+        <button class="btn btn-ghost btn-sm" id="btnExport">导出配置文件</button>
+        <button class="btn btn-ghost btn-sm" id="btnImport">导入配置文件</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="grp-title">关于</div>
+      <p class="hint" id="aboutText">音乐下载器 Android 版</p>
+      <p class="hint dim">标签读写由内置引擎完成，自研 ID3v2.3 / FLAC Vorbis Comment 写入，
+        不依赖任何第三方库。</p>
+    </div>
+
+    <div class="card">
+      <div class="grp-title">重置</div>
+      <button class="btn btn-ghost btn-sm" id="btnReset">恢复默认设置</button>
+    </div>
+
+    <div class="foot-space"></div>
+  </section>
+
+</main>
+
+<nav class="tabbar">
+  <button class="tab active" data-tab="search">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+         stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <span>搜索</span><i class="badge-dot" id="tabBadge" hidden></i>
+  </button>
+  <button class="tab" data-tab="files">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+         stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+    <span>文件</span>
+  </button>
+  <button class="tab" data-tab="settings">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+         stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="3"/>
+      <path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1A1.7 1.7 0 0 0 9 19.4a1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>
+    <span>设置</span>
+  </button>
+</nav>
+
+<div class="actionbar" id="actionBar" hidden>
+  <span id="selText">已选 0 项</span>
+  <div class="btn-row">
+    <button class="btn btn-ghost btn-sm" id="btnMove">移动到这里</button>
+    <button class="btn btn-danger btn-sm" id="btnDelete">删除</button>
+  </div>
+</div>
+
+<div class="toasts" id="toasts"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

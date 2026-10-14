@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>音乐下载器 Android 版 — 下载完播放器直接就能看到</title>
+<meta name="description" content="白色简约风的 Android 音乐下载工具。下载无损 FLAC / 320K MP3 的同时自动写入封面、双语时间轴歌词、专辑歌手标签，并直接存进系统 Music 目录，播放器立刻能扫到。">
+<meta property="og:title" content="音乐下载器 · Android 版">
+<meta property="og:description" content="下载完就能直接听，不用再手动把文件挪进 Music 文件夹">
+<meta property="og:image" content="img/2-done.png">
+<link rel="icon" href="img/icon.png">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#">
+      <img src="img/icon.png" alt="" width="28" height="28">
+      <span>音乐下载器 <em>Android</em></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#why">解决什么</a>
+      <a href="#features">功能</a>
+      <a href="#shots">截图</a>
+      <a href="#start">安装</a>
+      <a href="#faq">问答</a>
+      <a class="gh desktop-link" href="https://nishicouqie.github.io/music-downloader/">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span>电脑版</span>
+      </a>
+      <a class="gh" href="https://github.com/nishicouqie/music-downloader-android" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="pill">Android 7.0+ · APK 仅 0.7 MB · 无需 Root</div>
+    <h1>下载完，<br>播放器直接就能看到</h1>
+    <p class="lead">
+      手机上下歌最烦的不是下载本身，而是下载完之后<b>找不到</b> —— 文件被塞进乱七八糟的私有目录，
+      播放器只扫 <code>Music/</code> 结果什么也看不见。
+      这个 App 把文件<b>直接写进系统的 Music 目录</b>，顺手把封面、双语时间轴歌词、
+      专辑歌手全部写好。
+    </p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://github.com/nishicouqie/music-downloader-android/releases/latest/download/music-downloader-android.apk">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4.5-4.5M12 15l4.5-4.5M4 20h16"/></svg>
+        一键下载 APK
+      </a>
+      <a class="btn btn-ghost" href="https://nishicouqie.github.io/music-downloader/">
+        💻　用电脑？看桌面版
+      </a>
+    </div>
+    <p class="note">
+      手机扫码或直接点上面按钮即可下载 ·
+      <a href="https://github.com/nishicouqie/music-downloader-android/releases">查看所有版本</a>
+    </p>
+    <p class="note">首次安装系统会提示「未知来源应用」，允许一次即可</p>
+  </div>
+
+  <div class="wrap">
+    <div class="phones">
+      <figure class="phone">
+        <img src="img/1-search.png" alt="搜索界面">
+        <figcaption>搜索</figcaption>
+      </figure>
+      <figure class="phone main-phone">
+        <img src="img/2-done.png" alt="下载完成界面">
+        <figcaption>下载完成</figcaption>
+      </figure>
+      <figure class="phone">
+        <img src="img/3-files.png" alt="文件管理界面">
+        <figcaption>文件</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="why">
+  <div class="wrap narrow">
+    <h2 class="h2">它解决什么问题</h2>
+    <p class="h2sub">四个最常见的手机下载痛点，一次解决。</p>
+    <div class="pains">
+      <div class="pain">
+        <div class="pain-x">✗</div>
+        <div>
+          <h3>文件藏在应用私有目录里</h3>
+          <p>别的 App 下载完就找不到了，只能在那个 App 里听。</p>
+          <div class="pain-ok">✓　本 App 直接写进 <code>Music/音乐下载/</code></div>
+        </div>
+      </div>
+      <div class="pain">
+        <div class="pain-x">✗</div>
+        <div>
+          <h3>自带文件管理器难用，挪文件要点十几下</h3>
+          <p>在 Download 里找到歌，选中，剪切，再翻到 Music，粘贴……</p>
+          <div class="pain-ok">✓　App 内置「文件」页，勾一下就能搬进 Music</div>
+        </div>
+      </div>
+      <div class="pain">
+        <div class="pain-x">✗</div>
+        <div>
+          <h3>播放器扫不到别处的歌</h3>
+          <p>多数播放器只扫描系统媒体库，别处下载的文件根本不出现在列表里。</p>
+          <div class="pain-ok">✓　通过 MediaStore 登记，播放器打开就能扫到</div>
+        </div>
+      </div>
+      <div class="pain">
+        <div class="pain-x">✗</div>
+        <div>
+          <h3>没有封面、没有歌词、未知艺术家</h3>
+          <p>丢进播放器就是一堆光秃秃的文件名。</p>
+          <div class="pain-ok">✓　封面 + 双语时间轴歌词 + 专辑歌手全部自动写好</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="features">
+  <div class="wrap">
+    <h2 class="h2">该有的都有</h2>
+    <p class="h2sub">没有花哨的功能，就是把「在手机上下歌」这件事一次做对。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ico">📁</div>
+        <h3>直接存进 Music 目录</h3>
+        <p>通过系统 MediaStore 写入，播放器立刻能扫到。不需要「所有文件访问权限」这种敏感授权。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔀</div>
+        <h3>内置文件搬运</h3>
+        <p>能扫出 Download 等目录里的音频，勾选后一键移进 Music。也能自己选任意保存目录。</p>
+      </div>
+      <div class="card">
+        <div class="ico">⚙️</div>
+        <h3>配置文件导入导出</h3>
+        <p>全部设置（含 VIP 账号）存成一个 json 文件，换手机或分享给朋友不用手抄。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🎧</div>
+        <h3>最高音质</h3>
+        <p>优先无损 FLAC —— 实测拿到过 96kHz/24bit 的 Hi-Res 音源。也可选 320K MP3。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🎵</div>
+        <h3>歌词带完整时间轴</h3>
+        <p>日文原词 + 中文翻译按时间戳对齐合并。MP3 还会写入 SYLT 逐行同步歌词。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🖼</div>
+        <h3>封面自动挑最清晰的</h3>
+        <p>同时在网易云和 iTunes 里找同一张专辑，自动用分辨率最高的那张。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔑</div>
+        <h3>VIP 账号像 API Key 一样管理</h3>
+        <p>Cookie 可保存多组、随时切换，每组都能一键测试是否有效、能不能真的取到无损。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🪶</div>
+        <h3>体积只有 0.7 MB</h3>
+        <p>不依赖任何第三方库，标签读写是自己实现的，装完几乎不占空间。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="shots">
+  <div class="wrap">
+    <h2 class="h2">长什么样</h2>
+    <p class="h2sub">和电脑版同一套视觉语言：白底、细灰线、单一靛蓝点缀。</p>
+    <div class="shots-row">
+      <figure class="phone">
+        <img src="img/1-search.png" alt="搜索结果">
+        <figcaption><b>搜索</b><br>封面缩略图 · VIP 标记 · 自动标出最匹配的一条</figcaption>
+      </figure>
+      <figure class="phone">
+        <img src="img/2-done.png" alt="下载完成">
+        <figcaption><b>下载完成</b><br>列出每个文件实际写了什么，一眼看到封面和歌词</figcaption>
+      </figure>
+      <figure class="phone">
+        <img src="img/3-files.png" alt="文件管理">
+        <figcaption><b>文件</b><br>直接展示 Music 目录内容，可多选搬运、删除</figcaption>
+      </figure>
+      <figure class="phone">
+        <img src="img/5-settings-account.png" alt="设置">
+        <figcaption><b>设置</b><br>多组账号管理 · 保存位置 · 配置文件导入导出</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="start">
+  <div class="wrap narrow">
+    <h2 class="h2">三步用起来</h2>
+    <ol class="steps">
+      <li>
+        <span class="num">1</span>
+        <div>
+          <h3>下载 APK</h3>
+          <p><a href="https://github.com/nishicouqie/music-downloader-android/releases/latest/download/music-downloader-android.apk">点这里直接下载</a>（0.7 MB）。
+             手机浏览器下载后点开安装，系统会提示「未知来源应用」，允许一次即可。</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">2</span>
+        <div>
+          <h3>打开 App，搜歌下载</h3>
+          <p>歌名、歌手，或者直接粘贴网易云歌曲链接都行。默认同时下无损 FLAC 和 320K MP3。</p>
+        </div>
+      </li>
+      <li>
+        <span class="num">3</span>
+        <div>
+          <h3>打开你的音乐播放器</h3>
+          <p>文件已经在 <code>内部存储/Music/音乐下载/</code> 里了。播放器如果没显示，
+             在 App 的「文件」页点一下「重建媒体库索引」。</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="callout">
+      <h3>💡 想要官方无损通道，就配一个自己的 VIP 账号</h3>
+      <p>不配也能用，程序会自动走第三方接口。但配上你自己<b>已经付费购买</b>的网易云黑胶
+         Cookie，就能走官方通道 —— 更稳定、更合规，也是你的正当权益。</p>
+      <p class="small">最省事的办法：在<a href="https://nishicouqie.github.io/music-downloader/">电脑版</a>里配好账号，
+         导出配置文件，把 json 传到手机上导入，账号会一起带过来。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="faq">
+  <div class="wrap narrow">
+    <h2 class="h2">常见问题</h2>
+
+    <details>
+      <summary>装完打开，播放器还是找不到歌？</summary>
+      <p>先确认文件确实在 <code>内部存储/Music/音乐下载/</code>（App 的「文件」页能看到就说明在）。
+         然后在「文件」页点一下「重建媒体库索引」，让系统重新扫描一次。</p>
+      <p>部分播放器有自己的媒体库缓存，需要在它的设置里手动「重新扫描」。</p>
+    </details>
+
+    <details>
+      <summary>为什么有些歌没有歌词？</summary>
+      <p>歌词来自网易云。刚发布不久的新歌、纯音乐、冷门曲目在网易云本身就还没有歌词，
+         这时 App 会明确提示「这首歌没有时间轴歌词」，音频和封面照常下载。</p>
+    </details>
+
+    <details>
+      <summary>为什么 .lrc 文件跑到了 Download 目录？</summary>
+      <p>Android 11 起，第三方应用不允许把非媒体文件写进 <code>Music/</code>，系统会直接拒绝。
+         所以旁挂的 <code>.lrc</code> 会自动退到 <code>内部存储/Download/音乐下载/</code>。</p>
+      <p><b>歌词本身照常可用</b> —— 已经嵌进音频文件的 USLT / LYRICS 标签里，任何主流播放器都能显示。
+         如果你希望 .lrc 和音乐放一起，可以在设置里用「自己选一个目录」，通过系统选择器授权后就没有这个限制。</p>
+    </details>
+
+    <details>
+      <summary>提示「所有音源通道都没能取到直链」？</summary>
+      <p>三级通道全挂了。常见原因是第三方聚合接口临时限流或停止服务，或者这首歌要付费购买。
+         点「重试」；到设置里点账号的「测试」检查 Cookie 是否还有效。</p>
+    </details>
+
+    <details>
+      <summary>只有 128K，拿不到无损？</summary>
+      <p>界面上会显示实际拿到的音质。显示「酷我 128K」说明前两级都没成功，降级到了兜底源。
+         配一个网易云黑胶 VIP 账号走官方通道即可。</p>
+    </details>
+
+    <details>
+      <summary>能改保存位置吗？</summary>
+      <p>可以。设置 → 保存位置 →「自己选一个…」，用系统文件夹选择器挑任意目录。
+         也可以只改 <code>Music/</code> 下的子目录名（默认 <code>音乐下载</code>）。</p>
+    </details>
+
+    <details>
+      <summary>支持 iPhone 吗？</summary>
+      <p>不支持。iOS 不开放「把文件写进公共音乐目录」这类操作，也无法复现本 App 的核心体验，
+         而且上架需要 Mac 和苹果开发者账号。请使用 <a href="https://nishicouqie.github.io/music-downloader/">电脑版</a>。</p>
+    </details>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow">
+    <div class="cross">
+      <div class="cross-ico">💻</div>
+      <div>
+        <h3>在电脑上也想用？</h3>
+        <p>电脑版功能和手机版一致，另外还支持命令行批量下载、批量整理整个歌单。</p>
+        <a class="btn btn-ghost btn-sm" href="https://nishicouqie.github.io/music-downloader/">
+          查看电脑版 →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="wrap narrow">
+    <div class="warn">
+      <h3>使用须知</h3>
+      <ul>
+        <li>本工具仅供<b>个人学习与技术研究</b>使用，请勿用于商业用途或大规模分发。</li>
+        <li>请<b>只下载你有权获取的内容</b>。通过第三方接口获取需付费的会员内容属于灰色地带，
+            由此产生的一切后果由使用者自行承担。</li>
+        <li>推荐做法：配置你自己<b>已经付费购买</b>的 VIP 账号走官方通道。</li>
+        <li>本项目不包含、不托管任何音乐文件。</li>
+        <li>第三方接口与本项目无关，其可用性和行为随时可能变化。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-in">
+      <div>
+        <img src="img/icon.png" alt="" width="24" height="24">
+        <span>音乐下载器 · Android</span>
+        <span class="dim">MIT License</span>
+      </div>
+      <div class="foot-links">
+        <a href="https://github.com/nishicouqie/music-downloader-android">源码</a>
+        <a href="https://github.com/nishicouqie/music-downloader-android/releases/latest">下载</a>
+        <a href="https://nishicouqie.github.io/music-downloader/">电脑版</a>
+        <a href="https://github.com/nishicouqie/music-downloader-android/issues">反馈</a>
+      </div>
+    </div>
+    <p class="dis">原生 WebView 应用 · 标签读写由自研 ID3v2.3 / FLAC Vorbis Comment 引擎完成</p>
+  </div>
+</footer>
+
+</body>
+</html>
